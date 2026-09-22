@@ -4,36 +4,129 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="https://awiligar.github.io/sihalal-promptpad/favicon.svg" />
-    <meta name="description" content="SiHalal PromptPad helps SiHalal staff quickly build AI prompts for tools like ChatGPT and Claude without writing everything from scratch." />
-    <meta name="keywords" content="SiHalal, PromptPad, AI prompts, ChatGPT, Claude, prompt builder, staff productivity, static web app" />
+    <meta name="description" content="SiHalal PromptPad membantu staf SiHalal membuat prompt AI untuk ChatGPT dan Claude dengan cepat tanpa perlu menulis dari awal." />
+    <meta name="keywords" content="SiHalal, PromptPad, prompt AI, ChatGPT, Claude, pembuat prompt, produktivitas staf, aplikasi web statis" />
     <title>SiHalal PromptPad</title>
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SiHalal PromptPad" />
-    <meta property="og:description" content="A lightweight tool for creating AI prompts faster and more consistently for SiHalal staff." />
+    <meta property="og:description" content="Alat ringan untuk membuat prompt AI lebih cepat dan konsisten bagi staf SiHalal." />
     <meta property="og:image" content="https://awiligar.github.io/sihalal-promptpad/og-image.jpg" />
     <meta property="og:url" content="https://awiligar.github.io/sihalal-promptpad/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="SiHalal PromptPad" />
-    <meta name="twitter:description" content="Build AI prompts quickly with SiHalal PromptPad, designed to save time for staff using ChatGPT and Claude." />
+    <meta name="twitter:description" content="Buat prompt AI dengan cepat menggunakan SiHalal PromptPad, dirancang untuk menghemat waktu staf dalam menggunakan ChatGPT dan Claude." />
     <meta name="twitter:image" content="https://awiligar.github.io/sihalal-promptpad/og-image.jpg" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="root">
-      <div>
-        <main>
-          <div class="hero bg-base-200 min-h-screen">
-            <div class="hero-content text-center">
-              <div class="max-w-md">
-                <h1 class="text-5xl font-bold">Halo</h1>
-                <p class="py-6">SiHalal PromptPad Sedang Dalam Pengembangan. Mohon bersabar, kami sedang menyiapkan pengalaman terbaik untuk Anda.</p>
+      <header class="navbar bg-base-100 border-base-content/10 border-b">
+        <a class="roboto-serif btn btn-ghost text-xl">SiHalal PromptPad</a>
+      </header>
+      <main id="main-content">
+        <section class="hero" id="intro-banner" aria-label="Informasi aplikasi">
+          <div class="hero-content">
+            <div class="max-w-xl">
+              <div id="app-announcement" role="alert"
+                class="alert border-base-content/10 border rounded-none shadow-none">
+                <span class="roboto-serif">
+                  <a id="project-link" class="link" href="https://github.com/awiligar/sihalal-promptpad" target="_blank" rel="noopener noreferrer">SiHalal PromptPad: </a>
+                  susun menu, buat daftar bahan, hubungkan bahan ke menu, serta susun penjelasan proses pembuatan—sat set cepet beres, cepat cuan!
+                </span>
               </div>
             </div>
           </div>
-        </main>
-      </div>
+        </section>
+        <section class="hero" id="menu-naming-card" data-card="menu-naming" aria-labelledby="menu-naming-title">
+          <div class="hero-content">
+            <div class="max-w-xl p-4 border-base-content/10 border space-y-6">
+              <small id="menu-naming-updated" class="text-base-content/70">Update terakhir: Selasa 22 September 12.31</small>
+              <h1 id="menu-naming-title" class="roboto-serif text-xl font-bold">Penamaan “Menu” berdasarkan foto</h1>
+              <div id="menu-naming-note" role="alert" class="alert border-base-content/10 border rounded-none shadow-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current text-info h-6 w-6 shrink-0">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="roboto-serif">Jika pakai template prompt ini, sertakan juga foto menunya ya.</span>
+              </div>
+              <div class="prompt-block" id="menu-naming-prompt-block">
+                <p class="roboto-serif text-base-content/70">Prompt:</p>
+                <p id="menu-naming-prompt" class="roboto-serif text-sm">Ground the interpretation in Indonesia and create a suitable menu name for each uploaded photo, with exactly one menu name assigned to each photo; respond in Bahasa Indonesia.</p>
+              </div>
+              <div class="flex justify-end">
+                <button id="copy-menu-naming-btn" type="button" class="btn" data-copy-target="menu-naming-prompt">
+                  <span class="roboto-serif">Salin</span>
+                </button>
+              </div>
+              <p id="menu-naming-copy-status" class="roboto-serif text-sm text-base-content/60" aria-live="polite"></p>
+            </div>
+          </div>
+        </section>
+        <section class="hero" id="ingredient-list-card" data-card="ingredient-list" aria-labelledby="ingredient-list-title">
+          <div class="hero-content">
+            <div class="max-w-xl p-4 border-base-content/10 border space-y-6">
+              <small id="ingredient-list-updated" class="text-base-content/70">Update terakhir: Selasa 22 September 12.31</small>
+              <h1 id="ingredient-list-title" class="roboto-serif text-xl font-bold">Daftar “Bahan” berdasarkan menu</h1>
+              <div id="ingredient-list-note" role="alert" class="alert border-base-content/10 border rounded-none shadow-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current text-info h-6 w-6 shrink-0">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="roboto-serif">Lampirkan foto menu dan isi teks di dalam [ ] dengan satu atau beberapa menu.</span>
+              </div>
+              <div class="prompt-block" id="ingredient-list-prompt-block">
+                <p class="roboto-serif text-base-content/70">Prompt:</p>
+                <p id="ingredient-list-prompt" class="roboto-serif text-sm">Menu: []; Create a Bahasa Indonesia shopping list of locally available Indonesian shop items based on the given menu, written from the perspective of an Indonesian small business; prioritize ingredient brands commonly used by Indonesian small businesses, group items by shop aisle/category for clear organization, and if photos are uploaded with this prompt, include only items visibly supported by the photos and remove anything not shown; respond directly with text without using external tools, and reply entirely in Bahasa Indonesia.</p>
+              </div>
+              <div class="flex justify-end">
+                <button id="copy-ingredient-list-btn" type="button" class="btn" data-copy-target="ingredient-list-prompt">
+                  <span class="roboto-serif">Salin</span>
+                </button>
+              </div>
+              <p id="ingredient-list-copy-status" class="roboto-serif text-sm text-base-content/60" aria-live="polite"></p>
+            </div>
+          </div>
+        </section>
+        <section class="hero" id="menu-ingredient-link-card" data-card="menu-ingredient-link" aria-labelledby="menu-ingredient-link-title">
+          <div class="hero-content">
+            <div class="max-w-xl p-4 border-base-content/10 border space-y-6">
+              <small id="menu-ingredient-link-updated" class="text-base-content/70">Update terakhir: Selasa 22 September 12.31</small>
+              <h1 id="menu-ingredient-link-title" class="roboto-serif text-xl font-bold">Pemasangan “Menu” dengan “Bahan”</h1>
+              <div class="prompt-block" id="menu-ingredient-link-prompt-block">
+                <p class="roboto-serif text-base-content/70">Prompt:</p>
+                <p id="menu-ingredient-link-prompt" class="roboto-serif text-sm">List each menu item alongside the corresponding shop item(s) needed to make or serve it, clearly pairing each menu with its relevant shop item(s); reply entirely in Bahasa Indonesia.</p>
+              </div>
+              <div class="flex justify-end">
+                <button id="copy-menu-ingredient-link-btn" type="button" class="btn" data-copy-target="menu-ingredient-link-prompt">
+                  <span class="roboto-serif">Salin</span>
+                </button>
+              </div>
+              <p id="menu-ingredient-link-copy-status" class="roboto-serif text-sm text-base-content/60" aria-live="polite"></p>
+            </div>
+          </div>
+        </section>
+        <section class="hero" id="process-description-card" data-card="process-description" aria-labelledby="process-description-title">
+          <div class="hero-content">
+            <div class="max-w-xl p-4 border-base-content/10 border space-y-6">
+              <small id="process-description-updated" class="text-base-content/70">Update terakhir: Selasa 22 September 12.31</small>
+              <h1 id="process-description-title" class="roboto-serif text-xl font-bold">Penjelasan singkat “Proses” pembuatan</h1>
+              <div class="prompt-block" id="process-description-prompt-block">
+                <p class="roboto-serif text-base-content/70">Prompt:</p>
+                <p id="process-description-prompt" class="roboto-serif text-sm">Write a tight, compact Bahasa Indonesia paragraph explaining the complete process for making each menu; use a single paragraph for one menu or separate paragraphs with a new line for each menu, keeping the writing concise without compromising completeness, avoiding text styling and citations, and providing only the direct content for easy copying; reply entirely in Bahasa Indonesia.</p>
+              </div>
+              <div class="flex justify-end">
+                <button id="copy-process-description-btn" type="button" class="btn" data-copy-target="process-description-prompt">
+                  <span class="roboto-serif">Salin</span>
+                </button>
+              </div>
+              <p id="process-description-copy-status" class="roboto-serif text-sm text-base-content/60" aria-live="polite"></p>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
     <script src="app.js"></script>
   </body>
