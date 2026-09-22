@@ -127,7 +127,24 @@
           </div>
         </section>
       </main>
+      <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+        <aside>
+          <h2 class="roboto-serif text-3xl font-bold">SiHalal<br>PromptPad</h2>
+          <p class="roboto-serif">
+            Menyusun prompt yang sesuai syariah, jadi lebih mudah.
+            <br />
+            © <span id="year"></span> SiHalal PromptPad. Hak cipta dilindungi.
+          </p>
+        </aside>
+        <nav>
+          <h6 class="footer-title">Tautan</h6>
+          <a class="link link-hover" href="https://github.com/awiligar/sihalal-promptpad" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </footer>
     </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
     <script src="app.js"></script>
   </body>
 </html>
