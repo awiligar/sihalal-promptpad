@@ -136,6 +136,30 @@
             </div>
           </div>
         </section>
+        <section class="hero" id="process-revision-card" data-card="process-revision" aria-labelledby="process-revision-title">
+          <div class="hero-content">
+            <div class="max-w-xl p-4 border-base-content/10 border space-y-6">
+              <small id="process-revision-updated" class="text-base-content/70">Update terakhir: Senin 12 Oktober 19.50</small>
+              <h1 id="process-revision-title" class="roboto-serif text-xl font-bold">Revisi “Proses” berdasarkan <i>feedback</i></h1>
+              <div id="process-revision-note" role="alert" class="alert border-base-content/10 border rounded-none shadow-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current text-info h-6 w-6 shrink-0">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="roboto-serif">Ingat! Masukkan narasi yang menjelaskan proses ke dalam “Current narration []” dan feedback dari verifikator ke dalam “Verificator feedback []”.</span>
+              </div>
+              <div class="prompt-block" id="process-revision-prompt-block">
+                <p class="roboto-serif text-base-content/70">Prompt:</p>
+                <p id="process-revision-prompt" class="roboto-serif text-sm">Revise the narration below to address the Sihalal certification verificator’s rejection. Start with a concise, direct response to the feedback, followed by the original narration with minimal necessary changes to preserve its content while improving clarity, readability, and alignment with the feedback. Prioritize the verificator’s concerns for quick review, use factual and evidence-based statements, and never invent missing information or claim unsupported corrections. Reply entirely in Bahasa Indonesia and output only the revised narration in plain text paragraphs, without headings, bullet points, formatting, or additional explanations. Current narration: [ ]. Verificator feedback: [ ].</p>
+              </div>
+              <div class="flex justify-end">
+                <button id="copy-process-revision-btn" type="button" class="roboto-serif btn" data-copy-target="process-revision-prompt">
+                  <span>Salin</span>
+                </button>
+              </div>
+              <p id="process-revision-copy-status" class="roboto-serif text-sm text-base-content/60" aria-live="polite"></p>
+            </div>
+          </div>
+        </section>
       </main>
       <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
         <aside>
